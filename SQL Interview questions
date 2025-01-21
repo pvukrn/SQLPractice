@@ -1,0 +1,37 @@
+What is Pattern Matching in SQL?
+SQL pattern matching provides for pattern search in data if you have no clue as to what that word should be. This kind of SQL query uses wildcards to match a string pattern, rather than writing the exact word. The LIKE operator is used in conjunction with SQL Wildcards to fetch the required information.
+
+Using the % wildcard to perform a simple search
+The % wildcard matches zero or more characters of any type and can be used to define wildcards both before and after the pattern. Search a student in your database with first name beginning with the letter K:
+
+SELECT *
+FROM students
+WHERE first_name LIKE 'K%'
+Omitting the patterns using the NOT keyword
+Use the NOT keyword to select records that don't match the pattern. This query returns all students whose first name does not begin with K.
+
+SELECT *
+FROM students
+WHERE first_name NOT LIKE 'K%'
+Matching a pattern anywhere using the % wildcard twice
+Search for a student in the database where he/she has a K in his/her first name.
+
+SELECT *
+FROM students
+WHERE first_name LIKE '%Q%'
+Using the _ wildcard to match pattern at a specific position
+The _ wildcard matches exactly one character of any type. It can be used in conjunction with % wildcard. This query fetches all students with letter K at the third position in their first name.
+
+SELECT *
+FROM students
+WHERE first_name LIKE '__K%'
+Matching patterns for a specific length
+The _ wildcard plays an important role as a limitation when it matches exactly one character. It limits the length and position of the matched results. For example - 
+
+SELECT *   /* Matches first names with three or more letters */
+FROM students
+WHERE first_name LIKE '___%'
+
+SELECT *   /* Matches first names with exactly four characters */
+FROM students
+WHERE first_name LIKE '____'
